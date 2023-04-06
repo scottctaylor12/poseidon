@@ -4,19 +4,20 @@ import (
 	"bytes"
 	"encoding/json"
 	"fmt"
-	agentstructs "github.com/MythicMeta/MythicContainer/agent_structs"
-	"github.com/MythicMeta/MythicContainer/mythicrpc"
 	"os"
 	"os/exec"
 	"path/filepath"
 	"strings"
+
+	agentstructs "github.com/MythicMeta/MythicContainer/agent_structs"
+	"github.com/MythicMeta/MythicContainer/mythicrpc"
 )
 
 var payloadDefinition = agentstructs.PayloadType{
 	Name:                                   "poseidon",
 	FileExtension:                          "bin",
 	Author:                                 "@xorrior, @djhohnstein, @Ne0nd0g, @its_a_feature_",
-	SupportedOS:                            []string{agentstructs.SUPPORTED_OS_LINUX, agentstructs.SUPPORTED_OS_MACOS},
+	SupportedOS:                            []string{agentstructs.SUPPORTED_OS_LINUX, agentstructs.SUPPORTED_OS_MACOS, agentstructs.SUPPORTED_OS_WINDOWS},
 	Wrapper:                                false,
 	CanBeWrappedByTheFollowingPayloadTypes: []string{},
 	SupportsDynamicLoading:                 false,
@@ -88,7 +89,7 @@ func build(payloadBuildMsg agentstructs.PayloadBuildMessage) agentstructs.Payloa
 	targetOs := "linux"
 	if payloadBuildMsg.SelectedOS == "macOS" {
 		targetOs = "darwin"
-	} else if payloadBuildMsg.SelectedOS == "Windows" {
+	} else if payloadBuildMsg.SelectedOS == "windows" {
 		targetOs = "windows"
 	}
 	// This package path is used with Go's "-X" link flag to set the value string variables in code at compile

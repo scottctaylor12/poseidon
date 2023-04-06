@@ -20,5 +20,6 @@ require (
 	github.com/gen2brain/shm v0.0.0-20200228170931-49f9650110c5 // indirect
 	github.com/kballard/go-shellquote v0.0.0-20180428030007-95032a82bc51 // indirect
 	github.com/lxn/win v0.0.0-20210218163916-a377121e959e // indirect
+	github.com/mitchellh/go-ps v1.0.0 // indirect
 	golang.org/x/term v0.6.0 // indirect
 )
